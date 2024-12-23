@@ -23,7 +23,7 @@ export const LiveShop = (props: any) => {
     return (
         <div className="teleshop-root">
             <Link to={`/shop?url=${props.shop.url}`}>
-                <h1>
+                <h1 className='d-flex mb-0'>
                     <img src={`https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=${props.shop.url}&size=32`} />
                     &nbsp;
                     {props.shop.name}
@@ -53,7 +53,7 @@ export const LiveShopCollections = (props: any) => {
     return (
         <div className="teleshop-root">
             <Link to={`/shop?url=${props.shop.url}`}>
-                <h1>
+                <h1 className='d-flex mb-0'>
                     <img src={`https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=${props.shop.url}&size=32`} />
                     &nbsp;
                     {props.shop.name}
@@ -123,7 +123,7 @@ export const LiveShopProducts = (props: any) => {
     return (
         <div className="teleshop-root">
             <Link to={`/shop?url=${props.shop.url}`}>
-                <h1>
+                <h1 className='d-flex mb-0'>
                     <img className='m-1' src={`https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=${props.shop.url}&size=32`} />
                     <div className='m-1'>{props.shop.name}</div>
                 </h1>
