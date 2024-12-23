@@ -18,7 +18,7 @@ export default async (req: express.Request, res: express.Response) => {
 
     if (! shopUrl) {
         res.status(400);
-        res.send({ error: 'Missing shop url' });
+        res.send('Missing shop url');
         return;
     }
 
@@ -26,7 +26,7 @@ export default async (req: express.Request, res: express.Response) => {
 
     if (! props.shop) {
         res.status(400);
-        res.send({ error: 'Invalid shop' });
+        res.send('Invalid shop');
         return;
     }
 
