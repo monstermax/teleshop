@@ -60,7 +60,7 @@ export const LiveShopCollections = (props: any) => {
                 </h1>
             </Link>
 
-            <h3>🗂️ All collections</h3>
+            <h3 className='bg-dark text-light p-2'>🗂️ All collections</h3>
 
             {/* <pre>{JSON.stringify(props)}</pre> */}
 
@@ -124,20 +124,19 @@ export const LiveShopProducts = (props: any) => {
         <div className="teleshop-root">
             <Link to={`/shop?url=${props.shop.url}`}>
                 <h1>
-                    <img src={`https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=${props.shop.url}&size=32`} />
-                    &nbsp;
-                    {props.shop.name}
+                    <img className='m-1' src={`https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=${props.shop.url}&size=32`} />
+                    <div className='m-1'>{props.shop.name}</div>
                 </h1>
             </Link>
 
             {collection && (
-                <h3>
+                <h3 className='bg-dark text-light p-2'>
                     🗂️ {collection.name}
                 </h3>
             )}
 
             {! collection && (
-                <h3>
+                <h3 className='bg-dark text-light p-2'>
                     🛍️ All products
                 </h3>
             )}
