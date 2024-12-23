@@ -32,9 +32,9 @@ export const LiveShop = (props: any) => {
 
             {/* <pre>{JSON.stringify(props)}</pre> */}
 
-            <ul>
-                <li><Link to={`/collections?url=${props.shop.url}`}>collections</Link> ({props.collectionsCount})</li>
-                <li><Link to={`/products?url=${props.shop.url}`}>products</Link> ({props.productsCount})</li>
+            <ul className='nav nav-pills flex-column'>
+                <li className='nav-item p-1'><Link className="nav-link active bg-secondary" to={`/collections?url=${props.shop.url}`}>🗂️ collections ({props.collectionsCount})</Link></li>
+                <li className='nav-item p-1'><Link className="nav-link active bg-secondary" to={`/products?url=${props.shop.url}`}>🛍️ products ({props.productsCount})</Link></li>
             </ul>
         </div>
     );
@@ -60,7 +60,7 @@ export const LiveShopCollections = (props: any) => {
                 </h1>
             </Link>
 
-            <h3>collections</h3>
+            <h3>🗂️ All collections</h3>
 
             {/* <pre>{JSON.stringify(props)}</pre> */}
 
@@ -71,15 +71,15 @@ export const LiveShopCollections = (props: any) => {
             )}
 
             {props.collections && (
-                <ul>
+                <div className='nav nav-pills flex-column'>
                     {props.collections.map((collection: WoocommerceWpJsonCollectionsListCollection) => {
                         return (
-                            <li key={collection.slug}>
-                                <Link to={`/products?url=${props.shop.url}&collection=${collection.slug}`}>{collection.name} ({collection.count})</Link>
-                            </li>
+                            <div key={collection.slug} className='nav-item p-1'>
+                                <Link className="nav-link active bg-secondary" to={`/products?url=${props.shop.url}&collection=${collection.slug}`}>{collection.name} ({collection.count})</Link>
+                            </div>
                         );
                     })}
-                </ul>
+                </div>
             )}
         </div>
     );
@@ -132,13 +132,13 @@ export const LiveShopProducts = (props: any) => {
 
             {collection && (
                 <h3>
-                    {collection.name}
+                    🗂️ {collection.name}
                 </h3>
             )}
 
             {! collection && (
                 <h3>
-                    All products
+                    🛍️ All products
                 </h3>
             )}
 
@@ -214,17 +214,24 @@ function ProductModalContent(props: any) {
 
     return (
         <>
-            <div className='d-flex'>
-                <img src={product.images[0]?.src} style={{ width: '74px', height: '74px', margin: '15px' }} />
-                <div className='m-4'>
-                    <h2 className='h4'>{product.name}</h2>
-                    {product.prices.currency_prefix}{Math.round(Number(product.prices.price))/100}{product.prices.currency_suffix}
+            <div className="modal-header">
+                <div className='d-flex'>
+                    <img src={product.images[0]?.src} style={{ width: '120px', height: '120px', margin: '15px' }} />
+
+                    <div className='m-4'>
+                        <h2 className='h4'>{product.name}</h2>
+                        {product.prices.currency_prefix}{Math.round(Number(product.prices.price))/100}{product.prices.currency_suffix}
+                    </div>
                 </div>
+
+                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
-            <p className='p-3'>
-                {stripTags(product.description)}
-            </p>
+            <div className="modal-body">
+                <p className='p-3'>
+                    {stripTags(product.description)}
+                </p>
+            </div>
         </>
     );
 }
