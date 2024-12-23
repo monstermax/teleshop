@@ -18,7 +18,9 @@ npm i @types/node-fetch@2.6.9 @types/cheerio --save-dev
 
 tsc --init
 
+git init
+git add .
+git commit -am 'first commit'
+
 ```
-
-
 
