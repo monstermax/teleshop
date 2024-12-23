@@ -166,17 +166,22 @@ export const LiveShopProducts = (props: any) => {
                 </div>
             )}
 
-            <footer className='m-3 sticky-bottom bg-light'>
+            <footer className='sticky-bottom bg-light'>
                 <div className="d-flex justify-content-around">
                     <input type="hidden" id="page" value="${page}" />
-                    <button className={`btn btn-outline-secondary btn-sm btn-page-prev ${loading ? "disabled" : ""} ${page > 1 ? "" : "disabled"}`} onClick={() => pagePrev()}>⮜ Prev</button>
 
-                    <div>
+                    <button className={`btn btn-outline-secondary btn-sm btn-page-prev m-1 ${loading ? "disabled" : ""} ${page > 1 ? "" : "disabled"}`} onClick={() => pagePrev()}>
+                        ⮜ Prev
+                    </button>
+
+                    <div className='m-1'>
                         {loading && <>◌</>}
                         {!loading && <>Page: {page}/{pagesCount}</>}
                     </div>
 
-                    <button className={`btn btn-outline-secondary btn-sm btn-page-next ${loading ? "disabled" : ""} ${(page < pagesCount || products.length >= per_page) ? "" : "disabled"}`} onClick={() => pageNext()}>Next ➤</button>
+                    <button className={`btn btn-outline-secondary btn-sm btn-page-next m-1 ${loading ? "disabled" : ""} ${(page < pagesCount || products.length >= per_page) ? "" : "disabled"}`} onClick={() => pageNext()}>
+                        Next ➤
+                    </button>
                 </div>
             </footer>
 
