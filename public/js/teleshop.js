@@ -9,7 +9,7 @@ function initTelegram() {
         WebApp.expand();
         WebApp.ready();
 
-        if (window.location.pathname === '/') {
+        if (window.location.pathname === '/shop') {
             WebApp.BackButton.hide();
 
         } else {
