@@ -47,7 +47,7 @@ export const apiProducts = async (req: express.Request, res: express.Response) =
         return;
     }
 
-    const props = await fetchShopProductsData(shopUrl, collectionSlug, page);
+    const props = await fetchShopProductsData(shopUrl, collectionSlug, page, 15);
 
     if (! props.shop) {
         res.status(400);
@@ -59,7 +59,7 @@ export const apiProducts = async (req: express.Request, res: express.Response) =
 };
 
 
-async function fetchShopProductsData(shopUrl: string | null, collectionSlug?: string, page=1, limit=12): Promise<{ shop: Shop | null, collection: WoocommerceWpJsonCollectionsListCollection | null, products: WoocommerceWpJsonProductsListProduct[] | null, error: string | null }> {
+async function fetchShopProductsData(shopUrl: string | null, collectionSlug?: string, page=1, limit=10): Promise<{ shop: Shop | null, collection: WoocommerceWpJsonCollectionsListCollection | null, products: WoocommerceWpJsonProductsListProduct[] | null, error: string | null }> {
     if (!shopUrl) {
         return { shop: null, collection: null, products: null, error: "Missing shop URL" };
     }
