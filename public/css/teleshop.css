@@ -1,0 +1,49 @@
+
+a {
+    text-decoration: none;
+    color: #0d3e87
+}
+
+.teleshop-root {
+    margin: 0 auto;
+    max-width: 480px;
+}
+
+
+.list-grid-items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: flex-end;
+    /* transition: max-height var(--page-animation), opacity var(--page-animation); */
+    /* background-color: var(--block-bg-color); */
+}
+
+.list-grid-item {
+    position: relative;
+    width:160px;
+    height:120px;
+    padding: 4px 5px 6px 5px;
+    box-sizing: border-box;
+    text-align: center;
+    overflow: none;
+    font-size: .9em;
+}
+
+.list-grid-item img {
+    border-radius: 5px;
+}
+
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.pointer {
+    cursor: pointer;
+}
