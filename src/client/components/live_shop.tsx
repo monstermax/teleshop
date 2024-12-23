@@ -157,9 +157,11 @@ export const LiveShopProducts = (props: any) => {
             )}
 
             {products && (
-                <div className="list-grid-items">
+                <div className={`list-grid-items ${loading ? "placeholder-wave" : ""}`}>
                     {products.map((product: WoocommerceWpJsonProductsListProduct) => (
-                        <Product key={product.slug} product={product} setModalContent={setModalContent} />
+                        <div className={`${loading ? "placeholder" : ""}`} key={product.slug}>
+                            <Product product={product} setModalContent={setModalContent} />
+                        </div>
                     ))}
                 </div>
             )}
@@ -168,7 +170,12 @@ export const LiveShopProducts = (props: any) => {
                 <div className="d-flex justify-content-around">
                     <input type="hidden" id="page" value="${page}" />
                     <button className={`btn btn-secondary btn-sm btn-page-prev ${loading ? "disabled" : ""} ${page > 1 ? "" : "disabled"}`} onClick={() => pagePrev()}>⮜ Prev</button>
-                    <div>Page: {page}/{pagesCount}</div>
+
+                    <div>
+                        {loading && <>◌</>}
+                        {!loading && <>Page: {page}/{pagesCount}</>}
+                    </div>
+
                     <button className={`btn btn-secondary btn-sm btn-page-next ${loading ? "disabled" : ""} ${(page < pagesCount || products.length >= per_page) ? "" : "disabled"}`} onClick={() => pageNext()}>Next ➤</button>
                 </div>
             </footer>
