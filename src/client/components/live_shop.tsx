@@ -23,7 +23,7 @@ export const LiveShop = (props: any) => {
     return (
         <div className="teleshop-root">
             <Link to={`/shop?url=${props.shop.url}`}>
-                <h1 className='d-flex mb-0'>
+                <h1 className='h3 d-flex mb-0 bg-light p-1 sticky-top'>
                     <img src={`https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=${props.shop.url}&size=32`} />
                     &nbsp;
                     {props.shop.name}
@@ -53,14 +53,14 @@ export const LiveShopCollections = (props: any) => {
     return (
         <div className="teleshop-root">
             <Link to={`/shop?url=${props.shop.url}`}>
-                <h1 className='d-flex mb-0'>
+                <h1 className='h3 d-flex mb-0 bg-light p-1 sticky-top'>
                     <img src={`https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=${props.shop.url}&size=32`} />
                     &nbsp;
                     {props.shop.name}
                 </h1>
             </Link>
 
-            <h3 className='bg-dark text-light p-2'>🗂️ All collections</h3>
+            <h3 className='h4 bg-dark text-light p-2'>🗂️ All collections</h3>
 
             {/* <pre>{JSON.stringify(props)}</pre> */}
 
@@ -129,20 +129,20 @@ export const LiveShopProducts = (props: any) => {
     return (
         <div className="teleshop-root">
             <Link to={`/shop?url=${props.shop.url}`}>
-                <h1 className='d-flex mb-0'>
+                <h1 className='h3 d-flex mb-0 bg-light p-1 sticky-top'>
                     <img className='m-1' src={`https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=${props.shop.url}&size=32`} />
                     <div className='m-1'>{props.shop.name}</div>
                 </h1>
             </Link>
 
             {collection && (
-                <h3 className='bg-dark text-light p-2'>
+                <h3 className='h4 bg-dark text-light p-2'>
                     🗂️ {collection.name} ({productsCount})
                 </h3>
             )}
 
             {! collection && (
-                <h3 className='bg-dark text-light p-2'>
+                <h3 className='h4 bg-dark text-light p-2'>
                     🛍️ All products ({productsCount})
                 </h3>
             )}
@@ -166,17 +166,17 @@ export const LiveShopProducts = (props: any) => {
                 </div>
             )}
 
-            <footer>
+            <footer className='m-3 sticky-bottom bg-light'>
                 <div className="d-flex justify-content-around">
                     <input type="hidden" id="page" value="${page}" />
-                    <button className={`btn btn-secondary btn-sm btn-page-prev ${loading ? "disabled" : ""} ${page > 1 ? "" : "disabled"}`} onClick={() => pagePrev()}>⮜ Prev</button>
+                    <button className={`btn btn-outline-secondary btn-sm btn-page-prev ${loading ? "disabled" : ""} ${page > 1 ? "" : "disabled"}`} onClick={() => pagePrev()}>⮜ Prev</button>
 
                     <div>
                         {loading && <>◌</>}
                         {!loading && <>Page: {page}/{pagesCount}</>}
                     </div>
 
-                    <button className={`btn btn-secondary btn-sm btn-page-next ${loading ? "disabled" : ""} ${(page < pagesCount || products.length >= per_page) ? "" : "disabled"}`} onClick={() => pageNext()}>Next ➤</button>
+                    <button className={`btn btn-outline-secondary btn-sm btn-page-next ${loading ? "disabled" : ""} ${(page < pagesCount || products.length >= per_page) ? "" : "disabled"}`} onClick={() => pageNext()}>Next ➤</button>
                 </div>
             </footer>
 
