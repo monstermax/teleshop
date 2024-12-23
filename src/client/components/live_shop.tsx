@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 
 import { Link } from './elements/Link';
 import { fetchJson, stripTags } from '../lib/utils.client';
@@ -97,12 +97,14 @@ export const LiveShopProducts = (props: any) => {
 
     const [shop, setShop] = useState(props.shop);
     const [products, setProducts] = useState(props.products);
+    const [productsCount, setProductsCount] = useState(props.collection ? props.collection.count : props.shop.productsCount);
     const [collection, setCollection] = useState(props.collection);
     const [loading, setLoading] = useState(false);
     const [modalContent, setModalContent] = useState('');
 
     const [ per_page, setPerPage ] = useState(12);
     const [ page, setPage ] = useState(1);
+    const pagesCount = useMemo(() => Math.ceil(productsCount / per_page), [shop.url, collection])
 
     const pagePrev = () => setPage(page-1);
     const pageNext = () => setPage(page+1);
@@ -120,6 +122,10 @@ export const LiveShopProducts = (props: any) => {
             });
     }, [shop.url, collection, page])
 
+    useEffect(() => {
+        setProductsCount(collection ? collection.count : props.shop.productsCount);
+    }, [shop.url, collection]);
+
     return (
         <div className="teleshop-root">
             <Link to={`/shop?url=${props.shop.url}`}>
@@ -131,13 +137,13 @@ export const LiveShopProducts = (props: any) => {
 
             {collection && (
                 <h3 className='bg-dark text-light p-2'>
-                    🗂️ {collection.name}
+                    🗂️ {collection.name} ({productsCount})
                 </h3>
             )}
 
             {! collection && (
                 <h3 className='bg-dark text-light p-2'>
-                    🛍️ All products
+                    🛍️ All products ({productsCount})
                 </h3>
             )}
 
@@ -161,8 +167,9 @@ export const LiveShopProducts = (props: any) => {
             <footer>
                 <div className="d-flex justify-content-around">
                     <input type="hidden" id="page" value="${page}" />
-                    <button className={`btn btn-secondary btn-sm btn-page-prev ${loading ? "disabled" : ""} ${page > 1 ? "" : "disabled"}`} onClick={() => pagePrev()}>Prev</button>
-                    <button className={`btn btn-secondary btn-sm btn-page-next ${loading ? "disabled" : ""} ${products.length >= per_page ? "" : "disabled"}`} onClick={() => pageNext()}>Next</button>
+                    <button className={`btn btn-secondary btn-sm btn-page-prev ${loading ? "disabled" : ""} ${page > 1 ? "" : "disabled"}`} onClick={() => pagePrev()}>⮜ Prev</button>
+                    <div>Page: {page}/{pagesCount}</div>
+                    <button className={`btn btn-secondary btn-sm btn-page-next ${loading ? "disabled" : ""} ${(page < pagesCount || products.length >= per_page) ? "" : "disabled"}`} onClick={() => pageNext()}>Next ➤</button>
                 </div>
             </footer>
 
