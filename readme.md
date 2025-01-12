@@ -4,13 +4,22 @@
 
 ## Install
 ```bash
-git clone THISURL
+git clone https://github.com/monstermax/teleshop
 cd teleshop
 npm i
 ```
 
-## Run
+## Run (prod)
 ```bash
-
+npm run prod
 ```
 
+## Run (dev)
+```bash
+npm run dev
+```
+
+## Compile (dev to prod)
+```bash
+npm run prod
+```
