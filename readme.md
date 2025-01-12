@@ -1,11 +1,11 @@
 
 
-# Freemining React : Web client for Freemining
+# Teleshop : Woocommerce shops visualizer
 
 ## Install
 ```bash
 git clone THISURL
-cd freemining
+cd teleshop
 npm i
 ```
 
